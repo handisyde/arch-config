@@ -34,7 +34,7 @@ pacstrap /mnt       \
   linux-lts         \
   linux-lts-headers \
   linux-firmware    \
-  intel-ucode       \
+  amd-ucode         \
   efibootmgr        \
   vim               \
   git               \
@@ -60,18 +60,19 @@ EOF
 
 # Prepare locales and keymap
 print "Prepare locales and keymap"
-echo "KEYMAP=fr" > /mnt/etc/vconsole.conf
-sed -i 's/#\(fr_FR.UTF-8\)/\1/' /mnt/etc/locale.gen
-echo 'LANG="fr_FR.UTF-8"' > /mnt/etc/locale.conf
+echo "KEYMAP=uk" > /mnt/etc/vconsole.conf
+sed -i 's/#\(en_GB.UTF-8\)/\1/' /mnt/etc/locale.gen
+echo 'LANG="en_GB.UTF-8"' > /mnt/etc/locale.conf
 
 # Prepare initramfs
 print "Prepare initramfs"
 cat > /mnt/etc/mkinitcpio.conf <<"EOF"
-MODULES=(i915 intel_agp)
+MODULES=()
 BINARIES=()
 FILES=(/etc/zfs/zroot.key)
 HOOKS=(base udev autodetect modconf block keyboard keymap zfs filesystems)
 COMPRESSION="zstd"
+COMPRESSION_OPTIONS=(-T0)
 EOF
 
 cat > /mnt/etc/mkinitcpio.d/linux-lts.preset <<"EOF"
@@ -252,7 +253,7 @@ print 'Generate zbm'
 arch-chroot /mnt /bin/bash -xe <<"EOF"
 
   # Export locale
-  export LANG="fr_FR.UTF-8"
+  export LANG="en_GB.UTF-8"
 
   # Generate zfsbootmenu
   generate-zbm

@@ -20,7 +20,7 @@
 
 - Clone me and my submodules
 ```
-git clone --recursive https://github.com/eoli3n/arch-config
+git clone --recursive https://github.com/handisyde/arch-config
 ```
 - Run OS installer at [scripts/{zfs,btrfs}/install/](scripts/)
 - Install packages and configurations with [ansible](ansible/)
