@@ -46,7 +46,7 @@
   pacman:
     name:
       - imv # img visualizer
-      - kitty # terminal emulator
+      - wezterm # terminal emulator
       - evince # pdf viewer
       - evolution # mail client
       - gnome-keyring # evolution gnome keyring
@@ -115,7 +115,6 @@
       - otf-font-awesome
       #- ttf-impallari-cabin-font # xelatex cv
       - pastel # color viewer
-      - tiny-irc-client-git
       - starleaf-breeze
       - swappy # screenshot editor
       - senpai-irc # irc client for soju
